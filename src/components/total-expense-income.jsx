@@ -23,34 +23,18 @@ export const TotalExpenseIncome = () => {
     return (
       <nav className="h-1/4 my-4">
         <div className="mx-auto flex flex-col sm:flex-row justify-center items-center h-full space-y-4 sm:space-y-0">
-          {/* Button Controls on Small Screens */}
-          <div className="flex sm:hidden space-x-4 mb-4">
-            <button
-              onClick={handlePrev}
-              className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition"
-            >
-              &lt;
-            </button>
-            <button
-              onClick={handleNext}
-              className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition"
-            >
-              &gt;
-            </button>
-          </div>
-
           {/* Cards: Display Stacked on Small Screens, Side-by-Side on Large Screens */}
           <div className="mx-4 p-6">
             {/* Mobile Stacked Cards with Navigation */}
-            <div className="sm:hidden flex flex-col items-center space-y-4">
+            <div className="sm:hidden flex flex-col items-center space-y-4 relative">
               {cards.map((card, index) => (
                 <div
                   key={index}
-                  className={`text-center bg-white shadow-md w-full p-6 rounded-lg border border-gray-200 top-0 left-0 w-full ${
-                    index === activeIndex ? 'z-10' : 'z-0 opacity-50'
+                  className={`text-center bg-white shadow-md w-full p-6 rounded-lg border border-gray-200 absolute top-0 left-0 w-full transition-all duration-300 ${
+                    index === activeIndex ? 'z-10 opacity-100' : 'z-0 opacity-0'
                   }`}
                   style={{
-                    transform: `translateY(${(index - activeIndex) * 20}px)`,
+                    transform: `translateY(${(index - activeIndex) * 100}px)`,
                     transition: 'transform 0.3s ease-in-out',
                   }}
                 >
@@ -72,6 +56,15 @@ export const TotalExpenseIncome = () => {
                 </div>
               ))}
             </div>
+          </div>
+          {/* Button Controls on Small Screens */}
+          <div className="flex sm:hidden space-x-4 mb-4">
+            <button
+              onClick={handleNext}
+              className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition transform rotate-90"
+            >
+              <div className="w-2 h-2 border-t-2 border-r-2 border-gray-700 transform rotate-45"></div>
+            </button>
           </div>
         </div>
       </nav>
