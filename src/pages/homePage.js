@@ -8,7 +8,7 @@ export const HomePage = () => {
     <>
       <NavBar />
         <div className='flex flex-col lg:flex-row bg-gray-100 min-h-screen p-4'>
-          <div className="flex flex-col w-full lg:w-2/3 px-4 space-y-4">
+          <div className="flex flex-col w-full lg:w-2/3 lg:px-4 space-y-4">
             <TotalExpenseIncome />
             <TotalLineGraph />
           </div>

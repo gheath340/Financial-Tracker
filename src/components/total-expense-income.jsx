@@ -14,36 +14,39 @@ export const TotalExpenseIncome = () => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % cards.length);
     };
   
-    const handlePrev = () => {
-      setActiveIndex(
-        (prevIndex) => (prevIndex - 1 + cards.length) % cards.length
-      );
-    };
-  
     return (
-      <nav className="h-1/4 my-4">
-        <div className="mx-auto flex flex-col sm:flex-row justify-center items-center h-full space-y-4 sm:space-y-0">
+      <nav className="my-4">
+        <div className="mx-auto sm:flex justify-center items-center h-full ">
           {/* Cards: Display Stacked on Small Screens, Side-by-Side on Large Screens */}
-          <div className="mx-4 p-6">
+          <div className="sm:mx-4 sm:p-6">
             {/* Mobile Stacked Cards with Navigation */}
-            <div className="sm:hidden flex flex-col items-center space-y-4 relative">
+            <div className="relative h-[250px] w-full sm:hidden overflow-hidden">
               {cards.map((card, index) => (
-                <div
+                <button
                   key={index}
-                  className={`text-center bg-white shadow-md w-full p-6 rounded-lg border border-gray-200 absolute top-0 left-0 w-full transition-all duration-300 ${
-                    index === activeIndex ? 'z-10 opacity-100' : 'z-0 opacity-0'
+                  onClick={handleNext}
+                  className={`absolute inset-x-0 mx-auto text-center bg-white shadow-md w-11/12 p-6 rounded-lg border border-gray-200 ${
+                    index === activeIndex ? 'z-10 opacity-100' : 'z-0 opacity-50'
                   }`}
                   style={{
-                    transform: `translateY(${(index - activeIndex) * 100}px)`,
-                    transition: 'transform 0.3s ease-in-out',
+                    transform: index >= activeIndex
+                      ? `translateY(${(index - activeIndex) * 40}px)` // Normal stacking below
+                      : `translateY(${(cards.length + index - activeIndex) * 40}px)`, // Bottom-to-top transition
+                    transition: 'transform 0.3s ease-in-out, opacity 0.3s ease',
                   }}
-                >
+                  >
                   <p className="font-bold text-gray-700 mb-2">{card.title}</p>
-                  <p className="text-xl font-semibold text-green-500">{card.balance}</p>
-                </div>
+                  <p className="text-xl font-semibold text-green-500 mb-4">{card.balance}</p>
+                  {index === activeIndex && (
+                    <div className="flex justify-center mt-2">
+                      <div className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition transform rotate-90">
+                        <div className="w-2 h-2 border-t-2 border-r-2 border-gray-700 transform rotate-45"></div>
+                      </div>
+                    </div>
+                  )}
+                </button>
               ))}
             </div>
-
             {/* Desktop Cards Displayed Side-by-Side */}
             <div className="sm:flex hidden justify-between items-stretch">
               {cards.map((card, index) => (
@@ -56,15 +59,6 @@ export const TotalExpenseIncome = () => {
                 </div>
               ))}
             </div>
-          </div>
-          {/* Button Controls on Small Screens */}
-          <div className="flex sm:hidden space-x-4 mb-4">
-            <button
-              onClick={handleNext}
-              className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition transform rotate-90"
-            >
-              <div className="w-2 h-2 border-t-2 border-r-2 border-gray-700 transform rotate-45"></div>
-            </button>
           </div>
         </div>
       </nav>
