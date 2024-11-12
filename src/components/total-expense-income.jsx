@@ -5,9 +5,9 @@ export const TotalExpenseIncome = () => {
     const [activeIndex, setActiveIndex] = useState(0);
   
     const cards = [
-      { title: 'Capital One Balance', balance: '$10,000' },
       { title: 'America First Balance', balance: '$10,000' },
-      { title: 'Coinbase Balance', balance: '$10,000' },
+      { title: 'Capital One Balance', balance: '$7,000' },
+      { title: 'Coinbase Balance', balance: '$5,000' },
     ];
   
     const handleNext = () => {
@@ -20,18 +20,18 @@ export const TotalExpenseIncome = () => {
           {/* Cards: Display Stacked on Small Screens, Side-by-Side on Large Screens */}
           <div className="sm:mx-4 sm:p-6">
             {/* Mobile Stacked Cards with Navigation */}
-            <div className="relative h-[250px] w-full sm:hidden overflow-hidden">
+            <div className="relative h-[210px] w-full sm:hidden overflow-hidden">
               {cards.map((card, index) => (
                 <button
                   key={index}
                   onClick={handleNext}
-                  className={`absolute inset-x-0 mx-auto text-center bg-white shadow-md w-11/12 p-6 rounded-lg border border-gray-200 ${
+                  className={`absolute inset-x-0 mx-auto bg-white shadow-md w-11/12 p-6 rounded-lg border border-gray-200 ${
                     index === activeIndex ? 'z-10 opacity-100' : 'z-0 opacity-50'
                   }`}
                   style={{
                     transform: index >= activeIndex
-                      ? `translateY(${(index - activeIndex) * 40}px)` // Normal stacking below
-                      : `translateY(${(cards.length + index - activeIndex) * 40}px)`, // Bottom-to-top transition
+                      ? `translateY(${(index - activeIndex) * 50}px)` // Normal stacking below
+                      : `translateY(${(cards.length + index - activeIndex) * 40}px)`,
                     transition: 'transform 0.3s ease-in-out, opacity 0.3s ease',
                   }}
                   >
