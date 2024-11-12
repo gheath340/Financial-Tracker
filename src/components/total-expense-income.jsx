@@ -42,11 +42,11 @@ export const TotalExpenseIncome = () => {
           {/* Cards: Display Stacked on Small Screens, Side-by-Side on Large Screens */}
           <div className="mx-4 p-6">
             {/* Mobile Stacked Cards with Navigation */}
-            <div className="sm:hidden">
+            <div className="sm:hidden flex flex-col items-center space-y-4">
               {cards.map((card, index) => (
                 <div
                   key={index}
-                  className={`text-center bg-white shadow-md w-full p-6 rounded-lg border border-gray-200 absolute top-0 left-0 w-full ${
+                  className={`text-center bg-white shadow-md w-full p-6 rounded-lg border border-gray-200 top-0 left-0 w-full ${
                     index === activeIndex ? 'z-10' : 'z-0 opacity-50'
                   }`}
                   style={{
@@ -61,13 +61,13 @@ export const TotalExpenseIncome = () => {
             </div>
 
             {/* Desktop Cards Displayed Side-by-Side */}
-            <div className="sm:flex hidden justify-between items-center">
+            <div className="sm:flex hidden justify-between items-stretch">
               {cards.map((card, index) => (
                 <div
                   key={index}
-                  className="text-center bg-white shadow-md w-full sm:w-1/2 lg:w-1/3 mx-4 p-6 rounded-lg border border-gray-200"
+                  className="text-center justify-between bg-white shadow-md w-full sm:w-1/2 lg:w-1/3 mx-4 p-6 rounded-lg border border-gray-200"
                 >
-                  <p className="font-bold text-gray-700 mb-2">{card.title}</p>
+                  <p className="justify-self-center font-bold text-gray-700 mb-2 w-3/4">{card.title}</p>
                   <p className="text-xl font-semibold text-green-500">{card.balance}</p>
                 </div>
               ))}
