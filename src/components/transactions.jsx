@@ -9,7 +9,7 @@ export const Transactions = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-md flex-1 w-full h-full p-4 rounded-lg mx-auto">
+    <nav className="bg-white shadow-md border border-gray-200 flex-1 w-full h-full p-4 rounded-lg mx-auto">
       <div className="container mx-auto">
         <div className="text-black text-xl font-bold mb-4">Transactions</div>
 

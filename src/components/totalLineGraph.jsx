@@ -89,7 +89,7 @@ export const TotalLineGraph = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md h-1/2 p-4 rounded-lg w-full mx-auto max-w-5xl">
+    <nav className="bg-white shadow-md border border-gray-200 h-1/2 p-4 rounded-lg w-full mx-auto max-w-5xl">
       <div className="container mx-auto h-full">
         <Line data={data} options={{ ...options, maintainAspectRatio: false }} />
       </div>
