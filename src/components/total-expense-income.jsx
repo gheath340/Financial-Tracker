@@ -16,7 +16,7 @@ export const TotalExpenseIncome = () => {
   
     return (
       <nav className="my-4">
-        <div className="mx-auto sm:flex justify-center items-center h-full ">
+        <div className="mx-auto sm:flex justify-center items-center h-full">
           {/* Cards: Display Stacked on Small Screens, Side-by-Side on Large Screens */}
           <div className="sm:mx-4 sm:p-6">
             {/* Mobile Stacked Cards with Navigation */}
@@ -30,8 +30,9 @@ export const TotalExpenseIncome = () => {
                   }`}
                   style={{
                     transform: index >= activeIndex
-                      ? `translateY(${(index - activeIndex) * 50}px)` // Normal stacking below
-                      : `translateY(${(cards.length + index - activeIndex) * 40}px)`,
+                      ? `translateY(${(index - activeIndex) * 42}px)` // Normal stacking below
+                      : `translateY(${(cards.length + index - activeIndex) * 42}px)`,
+                    
                     transition: 'transform 0.3s ease-in-out, opacity 0.3s ease',
                   }}
                   >
