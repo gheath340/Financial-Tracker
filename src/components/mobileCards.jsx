@@ -27,15 +27,8 @@ export const MobileCards = ({ cards }) => {
                   transition: 'transform 0.3s ease-in-out, opacity 0.3s ease',
                 }}
                 >
-                <p className="font-bold text-gray-700 mb-2">{card.title}</p>
-                <p className="text-xl font-semibold text-green-500 mb-4">{card.balance}</p>
-                {index === activeIndex && (
-                  <div className="flex justify-center mt-2">
-                    <div className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition transform rotate-90">
-                      <div className="w-2 h-2 border-t-2 border-r-2 border-gray-700 transform rotate-45"></div>
-                    </div>
-                  </div>
-                )}
+                <p className={`font-bold text-gray-700 mb-2 ${index === activeIndex ? 'opacity-100' : 'opacity-0'}`}>{card.title}</p>
+                <p className={`text-xl font-semibold text-green-500 mb-4 ${index === activeIndex ? 'opacity-100' : 'opacity-0'}`}>{card.balance}</p>
               </button>
             ))}
         </div>
